@@ -3,6 +3,9 @@ import './App.css'
 
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
+
+//import FormContainer from './containers/index_form'
+
 import {NoteEditor} from "./components/NoteEditor"
 import {NotesViewer} from "./components/NotesViewer";
 
@@ -61,6 +64,9 @@ function App() {
 
     return (
         <div className="App">
+            {/* Sign In Sign Up */}
+            {/* <FormContainer /> */}
+            
             {/* Header Part */}
             <header>
                 <p>Simple<b>Notes</b> 📝</p>
