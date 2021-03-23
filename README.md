@@ -2,7 +2,10 @@
 npm install --save react-draft-wysiwyg draft-js
 ```
 
-
+<p float="left">
+  <img src="https://github.com/heorhii-bolotov/react-notes-client/blob/master/editor.png" width="400" height="400">
+  <img src="https://github.com/heorhii-bolotov/react-notes-client/blob/master/login.jpg" width="400" height="400">
+</p>
 
 * [Building rich text editors in React using Draft.js and react-draft-wysiwyg
 ](https://blog.logrocket.com/building-rich-text-editors-in-react-using-draft-js-and-react-draft-wysiwyg/)
