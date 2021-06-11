@@ -1,5 +1,15 @@
+
+## Backend 
+```shell
+cd server
+npm i  
+npm start 
+```
+
+## Client 
 ```bash 
-npm install --save react-draft-wysiwyg draft-js
+npm i  
+npm start 
 ```
 
 <p float="left">
