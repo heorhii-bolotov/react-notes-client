@@ -37,7 +37,7 @@ export const getNotes = (userData) => async (dispatch) => {
         let { data } = await api.fetchPosts(userData)
         dispatch({type: GET_NOTES, data})
     } catch (error) {
-        console.log(error);
+        console.log(error)
     }
 }
 
