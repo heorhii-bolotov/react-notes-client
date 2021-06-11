@@ -10,7 +10,6 @@ import AddIcon from "@material-ui/icons/Add"
 import {Cards} from "./Cards"
 
 export function NotesViewer({notes, onRemove, onEdit, onAdd}) {
-
     return (
         <div>
             <ButtonGroup variant="contained" color='primary'>

@@ -3,11 +3,10 @@ import '../App.css'
 
 import { makeStyles } from '@material-ui/core/styles'
 import DeleteIcon from '@material-ui/icons/Delete'
-import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import Fab from '@material-ui/core/Fab'
 
-import {EditorState, convertToRaw, convertFromRaw} from 'draft-js'
+import {convertToRaw} from 'draft-js'
 import draftToHtml from "draftjs-to-html";
 
 
@@ -25,14 +24,12 @@ function choose(choices) {
     return choices[index]
 }
 
-function Card({onRemove, onEdit, data, index}) {
+function Card({onRemove, onEdit, data, id}) {
 
     const classes = useStyles()
-    // const {title, text, category, color, id} = data
     const {title, text} = data
     const category = 'topic'
     const color = choose(["#FEC006", "#2196F3", "#FE5621", "#673AB7"])
-    const id = 1
 
     return (
         <article className="article">
@@ -49,7 +46,7 @@ function Card({onRemove, onEdit, data, index}) {
                     }}
                     className={classes.margin}
                     aria-label="Edit"
-                    onClick={() => onEdit(index)}
+                    onClick={() => onEdit(id)}
                 >
                     <EditIcon />
                 </Fab>
@@ -58,7 +55,7 @@ function Card({onRemove, onEdit, data, index}) {
                     color="secondary"
                     className={classes.extendedIcon}
                     aria-label="Delete"
-                    onClick={() => onRemove(index)}
+                    onClick={() => onRemove(id)}
                 >
                     <DeleteIcon />
                 </Fab>
@@ -72,8 +69,7 @@ function Card({onRemove, onEdit, data, index}) {
 
 export function Cards({onRemove, onEdit, notes}) {
 
-    const renderArticle = (note, idx) => {
-
+    const renderArticle = (note) => {
         const data = {
             ...note,
             text: createMarkup(getHtml(note.text))
@@ -82,7 +78,7 @@ export function Cards({onRemove, onEdit, notes}) {
         return (
             <div className="column">
                 <Card
-                    index={idx}
+                    id={data.id}
                     data={data}
                     onRemove={onRemove}
                     onEdit={onEdit}
