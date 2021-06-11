@@ -2,7 +2,6 @@
   "name": "server",
   "version": "1.0.0",
   "main": "server.js",
-  
   "scripts": {
     "start": "nodemon server.js"
   },
@@ -14,6 +13,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.12.12",
-    "moongoose": "0.0.5"
+    "moongoose": "^0.0.4"
   }
 }
