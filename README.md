@@ -15,6 +15,7 @@ npm start
 <p float="left">
   <img src="https://github.com/heorhii-bolotov/react-notes-client/blob/main/editor.png" width="400" height="400">
   <img src="https://github.com/heorhii-bolotov/react-notes-client/blob/main/login.jpg" width="400" height="400">
+![img.png](img.png)
 </p>
 
 
