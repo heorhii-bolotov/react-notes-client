@@ -18,6 +18,8 @@ const deserialize = data => !data.length
         { ...obj, text: EditorState.createWithContent(convertFromRaw(JSON.parse(obj.text))) }
     ))
 
+const getRandomInt = (max= 100000) => Math.floor(Math.random() * max)
+
 function App() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
     const [isEditing, setIsEditing] = useState(false)
@@ -26,17 +28,22 @@ function App() {
     const [editorState, setEditorState] = useState({text: null, title: null, id: null})
 
     useEffect(() => {
-        dispatch(getNotes(user.result._id))
-        setNotes(deserialize(JSON.parse(localStorage.getItem('notes'))))
+        if (user !== null) {
+            dispatch(getNotes(user.result._id))
+            setNotes(deserialize(JSON.parse(localStorage.getItem('notes'))))
+        } else {
+            localStorage.setItem('notes', JSON.stringify([]))
+        }
     }, [])
 
-    const getRandomInt = (max= 100000) => Math.floor(Math.random() * max)
+    const updateNotes = () => setNotes(deserialize(JSON.parse(localStorage.getItem('notes'))))
 
     const onSave = (data, id=null) => {
         id === null
             ? dispatch(createNote({...data, id: getRandomInt().toString(), user_id: user.result._id}))
+                .then(_ => updateNotes())
             : dispatch(updateNote({...data, id: id.toString(), user_id: user.result._id}))
-        setNotes(deserialize(JSON.parse(localStorage.getItem('notes'))))
+                .then(_ => updateNotes())
         setIsEditing(!isEditing)
     }
 
@@ -52,7 +59,7 @@ function App() {
 
     const onRemove = (id) => {
         dispatch(deleteNote(user.result._id, id.toString()))
-        setNotes(deserialize(JSON.parse(localStorage.getItem('notes'))))
+            .then(_ => updateNotes())
     }
 
     const onEdit = (id) => {
