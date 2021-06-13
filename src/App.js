@@ -12,8 +12,7 @@ import { createNote, getNotes, deleteNote, updateNote } from "./actions/actions"
 import {EditorState, convertFromRaw} from "draft-js"
 import { useDispatch } from "react-redux"
 
-const deserialize = data =>
-    data === null ? [] : !data.length
+const deserialize = data => !data.length
     ? data
     : data.map(obj => (
         { ...obj, text: EditorState.createWithContent(convertFromRaw(JSON.parse(obj.text))) }
@@ -29,10 +28,9 @@ function App() {
     const [editorState, setEditorState] = useState({text: null, title: null, id: null})
 
     useEffect(() => {
-        if (user !== null) {
+        if (user !== null)
             dispatch(getNotes(user.result._id))
                 .then(_ => updateNotes())
-        }
         else
             localStorage.setItem('notes', JSON.stringify([]))
     }, [])
