@@ -12,6 +12,16 @@ npm i
 npm start 
 ```
 
+## Docker 
+```shell
+docker-compose --env-file .env up -d --build
+# some adds 
+docker-compose logs
+docker-compose down 
+```
+
+Then go to `localhost:3000`
+
 <p float="left">
   <img src="https://github.com/heorhii-bolotov/react-notes-client/blob/newbackauth/editor.png" width="400" height="400">
   <img src="https://github.com/heorhii-bolotov/react-notes-client/blob/newbackauth/login.jpg" width="400" height="400">
