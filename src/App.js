@@ -27,6 +27,8 @@ function App() {
     const dispatch = useDispatch()
     const [editorState, setEditorState] = useState({text: null, title: null, id: null})
 
+    const paperStyle={padding:  20, height: 430,width:280, margin: "5px auto"};
+
     useEffect(() => {
         if (user !== null)
             dispatch(getNotes(user.result._id))
@@ -65,7 +67,6 @@ function App() {
         setEditorState(notes.find(value => value.id === id))
         setIsEditing(!isEditing)
     }
-
 
     return (
             <BrowserRouter>

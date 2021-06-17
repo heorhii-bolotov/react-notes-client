@@ -3,10 +3,12 @@ import { TextField, Grid, InputAdornment, IconButton} from "@material-ui/core";
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 
-const Input = ({name, label, type, placeholder, handleChange, handleShowPassword}) => {
+const Input = ({name, label, type, placeholder, handleChange, handleShowPassword, error=null}) => {
     return (
         <Grid>
-            <TextField 
+            <TextField
+                {...(error && {error:true,helperText:error})}
+                
                 name = {name}
                 label = {label}
                 type = {type}
