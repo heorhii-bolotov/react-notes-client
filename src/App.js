@@ -28,12 +28,12 @@ function App() {
     const [editorState, setEditorState] = useState({text: null, title: null, id: null})
 
     useEffect(() => {
-        if (user !== null)
+        if (user !== null) 
             dispatch(getNotes(user.result._id))
                 .then(_ => updateNotes())
-        else
+        else 
             localStorage.setItem('notes', JSON.stringify([]))
-    }, [])
+        }, [])
 
     const updateNotes = () => setNotes(deserialize(JSON.parse(localStorage.getItem('notes'))))
 
@@ -65,7 +65,6 @@ function App() {
         setEditorState(notes.find(value => value.id === id))
         setIsEditing(!isEditing)
     }
-
 
     return (
             <BrowserRouter>

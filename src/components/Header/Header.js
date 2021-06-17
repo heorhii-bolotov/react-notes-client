@@ -11,12 +11,10 @@ const Header = () => {
     const history = useHistory();
     const location = useLocation();
 
- 
     const logout = () => {
         dispatch({ type: 'LOGOUT' });
-
-        history.push('/');
-        setUser(null); 
+        history.push('/auth');
+        setUser(null)
     };
 
     useEffect(() => {

@@ -15,7 +15,7 @@ const FormContainer=()=>{
       setValue(newValue);
     };
 
-  const paperStyle={width:320,margin:"50px auto"}
+  const paperStyle={maxWidth:320, margin:"50px auto"}
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
   

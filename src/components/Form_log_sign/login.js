@@ -9,7 +9,7 @@ import { signin } from '../../actions/actions'
 const initialState = { email: '', password: '' }
 
 const Login = ({handleChange}) => {
-        const paperStyle={padding:  20, height: 430,width:280, margin: "5px auto"}
+        const paperStyle={padding:  20, minHeight: 430}
         const avatarStyle = {backgroundColor: "#1bbd7e"}
         const btnStyle = {margin: '8px 0'}
         const signupStyle = {padding: "15px 20px", border: "1px solid #d1d5da", borderRadius: "10px"}
@@ -26,7 +26,6 @@ const Login = ({handleChange}) => {
       const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(signin(formData, history));
-        console.log(formData)
       };
 
       const handleChange_form = (e) => {
