@@ -1,15 +1,23 @@
-import React, {useEffect, useState} from 'react'
-import './App.css'
+import React, {useEffect, useState} from 'react';
+import './App.css';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
+import { Container, Typography } from "@material-ui/core"
+import { BrowserRouter, Switch, Route} from 'react-router-dom';
+
+import FormContainer from './containers/index_form'
 
 //import FormContainer from './containers/index_form'
+import View from './components/test_components/test_view'
 
 import {NoteEditor} from "./components/NoteEditor"
 import {NotesViewer} from "./components/NotesViewer";
 
 function App() {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     const [isEditing, setIsEditing] = useState(false)
     const [notes, setNotes] = useState([])
@@ -62,37 +70,42 @@ function App() {
         )
     }
 
+    
     return (
-        <div className="App">
-            {/* Sign In Sign Up */}
-            {/* <FormContainer /> */}
-            
-            {/* Header Part */}
-            <header>
-                <p>Simple<b>Notes</b> 📝</p>
-            </header>
+  
 
-            {/* Text Editor or List of Notes */}
-            {
-                isEditing ?
-                    <NoteEditor
-                        onSave={onSave}
-                        onCancel={onCancel}
-                        note={editorState}
-                    /> :
-                    <NotesViewer
-                        onAdd={onAdd}
-                        onRemove={onRemove}
-                        onEdit={onEdit}
-                        notes={notes}
-                    />
-            }
+            <BrowserRouter>
+                <Container maxWidth="lg">
+                    {/* Header Part */}
+                    <Header/>
 
-            <footer>
-                <p>Made with <span role="img" aria-label="love">❤️</span> by <a href="#"><b>Heorh & Denis</b></a></p>
-            </footer>
-
-        </div>
+                    <Switch>
+                        <Route exact path="/">
+                            {/* Text Editor or List of Notes */}
+                            {
+                            isEditing ?
+                                <NoteEditor
+                                    onSave={onSave}
+                                    onCancel={onCancel}
+                                    note={editorState}
+                                /> :
+                                <NotesViewer
+                                    onAdd={onAdd}
+                                    onRemove={onRemove}
+                                    onEdit={onEdit}
+                                    notes={notes}
+                                />
+                            }
+                        </Route>
+                        {/* Sign In Sign Up */}
+                        <Route path="/auth" exact component={FormContainer}/>
+                    </Switch>
+                  
+                    {/* Footer Part */}
+                    <Footer /> 
+                </Container>
+            </BrowserRouter>
+    
     )
 
 }

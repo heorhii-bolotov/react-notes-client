@@ -42,6 +42,9 @@ export function NoteEditor({onSave, onCancel, note}) {
             title: titleState,
             text: editorState
         }, note ? note.idx : null)
+
+
+        //dispatch(createNote(formData, history))
     }
 
     return (
