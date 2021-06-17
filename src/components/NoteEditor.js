@@ -16,6 +16,7 @@ import TitleIcon from '@material-ui/icons/Title'
 import DeleteIcon from "@material-ui/icons/Delete"
 
 import {Cards} from "./Cards"
+import {createNote} from "../actions/actions";
 
 export function NoteEditor({onSave, onCancel, note}) {
 
@@ -41,7 +42,7 @@ export function NoteEditor({onSave, onCancel, note}) {
         onSave({
             title: titleState,
             text: editorState
-        }, note ? note.idx : null)
+        }, note ? note.id : null)
     }
 
     return (
