@@ -12,7 +12,7 @@ const signin = async (req, res) => {
 
         const isPasswordCorrect = await bcryptjs.compare(password, existingUser.password)
 
-        if(!isPasswordCorrect) return res.status(400).json({message: "invalid email or password"})
+        if(!isPasswordCorrect) return res.status(400).json({message: "Invalid email or password"})
 
         const token = jwt.sign({email: existingUser.email, id: existingUser.id}, 'test', {expiresIn: "2h"})
 
@@ -29,7 +29,7 @@ const signup = async (req, res) => {
     try {
         const existingUser = await User.findOne({ email });
 
-        if(existingUser) return res.status(400).json({message: "User already exists."});
+        if(existingUser) return res.status(400).json({message: "User already exists. Email is already taken"});
 
         const hashedPassword = await bcryptjs.hash(password, 12);
 

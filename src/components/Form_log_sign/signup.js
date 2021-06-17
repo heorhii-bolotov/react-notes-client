@@ -9,22 +9,33 @@ import { signup } from '../../actions/actions'
 const initialState = { username: '', email: '', password: '' }
 
 const SignUp = () => {
-        const paperStyle={padding:  20, height: 430,width:280, margin: "5px auto"};
+        const paperStyle={padding:  20, height: 450,width:280, margin: "5px auto"};
         const avatarStyle = {backgroundColor: "#1bbd7e"};
         const btnStyle = {margin: '8px 0'};
 
         const [showPassword, setShowPassword] = useState(false);
         const [formData, setFormData] = useState(initialState)
+        const [errors, setErrors] = useState({});
+
         const dispatch = useDispatch();
         const history = useHistory();
-     
+
+        const validate = () => {
+          let err_temp = {};
+          err_temp.password = formData.password?.length>8 ? "": "Password should be at least 8 characters";
+          err_temp.username = formData.username?.length<20 ? "": "Username should not exceed 20 Characters";
+          err_temp.email = !/^[A-Z0-9._%+-]+\.[A-Z]{2-4}$/i.test(formData.email?.length) ? "": "Email is not valid";
+          setErrors({ ...err_temp})
+          return Object.values(err_temp).every(x => x == "")
+        }
 
         const handleShowPassword = () =>  setShowPassword((prevShowPasswprd) => !prevShowPasswprd)
 
         const handleSubmit = (e) => {
           e.preventDefault();
-          dispatch(signup(formData, history));
-          console.log(formData);
+          if (validate()){
+            dispatch(signup(formData, history));
+          }
         };
 
         const handleChange = (e) => {
@@ -48,6 +59,7 @@ const SignUp = () => {
                     name="username"
                     label="Username"
                     handleChange = {handleChange}
+                    error={errors.username}
                   />
 
                 <Input
@@ -56,6 +68,7 @@ const SignUp = () => {
                     label="Email"
                     type="email"
                     handleChange = {handleChange}
+                    error={errors.email}
                   />    
                 
                 <Input
@@ -65,6 +78,7 @@ const SignUp = () => {
                     type = {showPassword ? "text" : "password"} 
                     handleShowPassword={handleShowPassword}
                     handleChange = {handleChange}
+                    error={errors.password}
                   />
 
                 <Typography variant='caption'>Make sure it's at least 8 characters</Typography>  
