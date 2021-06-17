@@ -5,11 +5,12 @@ import {Grid, Paper, Avatar, Button, Typography} from '@material-ui/core';
 import { useHistory } from 'react-router';
 import { useDispatch } from "react-redux";
 import { signup } from '../../actions/actions'
+import { GoogleLogin } from 'react-google-login'
 
 const initialState = { username: '', email: '', password: '' }
 
 const SignUp = () => {
-        const paperStyle={padding:  20, height: 450,width:280, margin: "5px auto"};
+        const paperStyle={padding:  20, minHeight: 430, maxWidth:280};
         const avatarStyle = {backgroundColor: "#1bbd7e"};
         const btnStyle = {margin: '8px 0'};
 
@@ -82,13 +83,19 @@ const SignUp = () => {
                   />
 
                 <Typography variant='caption'>Make sure it's at least 8 characters</Typography>  
-    
+                <br />
                 <Button
                   color="primary"
                   variant="contained"
                   type="submit"
                   style={btnStyle}
                 >Sign Up</Button>
+
+                {/* <GoogleLogin>
+                  clientId="GOOGLE ID"
+                  rendre
+                </GoogleLogin> */}
+
               </Grid>       
             </form>
 
