@@ -18,29 +18,29 @@ const Header = () => {
     };
 
     useEffect(() => {
-        setUser(JSON.parse(localStorage.getItem('profile')))   
+        setUser(JSON.parse(localStorage.getItem('profile')))
     }, [location]);
 
     return (
         <AppBar style={barStyle} position="static">
-            <Typography component={Link} to="/" color="inherit" variant="h5" align="center" >
+            <Typography color="inherit" variant="h5" align="center" >
                 <p>Simple<b>Notes</b> 📝</p>
             </Typography>
             <Toolbar>
                 { user?.result ? (
                     <div>
                         <Typography variant="h6"> Welcome <b>{user.result.username}</b> </Typography>
-                        <Button variant="contained" onClick={logout}> 
+                        <Button variant="contained" onClick={logout}>
                             Logout
                         </Button>
                     </div>
                 ) : (
                     <div>
                         <Button component={Link} to="/auth" variant="contained" color="primary">
-                            Sign In 
+                            Sign In
                         </Button>
                     </div>
-                )} 
+                )}
             </Toolbar>
 
         </AppBar>
