@@ -26,7 +26,6 @@ const Login = ({handleChange}) => {
       const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(signin(formData, history));
-        console.log(formData)
       };
 
       const handleChange_form = (e) => {

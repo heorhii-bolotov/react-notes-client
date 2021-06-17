@@ -25,7 +25,7 @@ Then go to `localhost:3000`
 <p float="left">
   <img src="https://github.com/heorhii-bolotov/react-notes-client/blob/newbackauth/editor.png" width="400" height="400">
   <img src="https://github.com/heorhii-bolotov/react-notes-client/blob/newbackauth/login.jpg" width="400" height="400">
-  <img src="https://github.com/heorhii-bolotov/react-notes-client/blob/newbackauth/img.png" width="400" height="400">
+  <img src="https://github.com/heorhii-bolotov/react-notes-client/blob/branchdev/img.png" width="400" height="400">
 </p>
 
 

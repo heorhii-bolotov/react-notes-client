@@ -19,7 +19,7 @@ export function NotesViewer({notes, onRemove, onEdit, onAdd}) {
         return (
           <Paper elevation={2} style={paperStyle}>
             <Typography style={textStyle} variant="h4" align="center">
-                <b style={textStyle1}>SimpleNotes</b> is easy way to create own notes.<br /><b>Sign in to start.</b>
+                <b style={textStyle1}>SimpleNotes</b> is easy way to create own notes.<br /><b>Sign in to start</b>
             </Typography>
           </Paper>
         );
